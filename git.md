@@ -13,3 +13,24 @@ Create a new repo in GitHub.
 Then link your local repo to the GitHub repository: `git remote add origin github_url`
 
 Verify remote connection: `git remote -v`
+
+Push to remote GitHub repo: 
+`git push origin branch_name`
+
+# Checking Status
+`git status`
+
+# Committing Changes
+Stage a change:
+`git add filename.txt`
+
+Stage all changes: `git add -A`
+
+Commit: `git commit -m "message"`
+
+# Branching
+Create and move to a new branch: `git chekcout -b branch_name`
+
+Make changes and commit as usualy withing the new branch. 
+
+See existing branch: `git branch`
