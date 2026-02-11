@@ -34,3 +34,5 @@ Create and move to a new branch: `git chekcout -b branch_name`
 Make changes and commit as usualy withing the new branch. 
 
 See existing branch: `git branch`
+
+Deleting a branch: `git branch -d branch_name`

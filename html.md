@@ -15,3 +15,12 @@ Determines the layout of your structure.
     </body>
 </html>
 ```
+
+# User Input 
+```html
+<input type="text" placeholder="Enter Text Here">
+```
+
+# Buttons
+```html<button> Click Me! </button>
+```
