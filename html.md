@@ -22,5 +22,12 @@ Determines the layout of your structure.
 ```
 
 # Buttons
-```html<button> Click Me! </button>
+Basic construction:
+```html
+<button> Click Me! </button>
+```
+
+Attaching Javascript function:
+```html
+<button onclick="myFunction()">Click me</button>
 ```
