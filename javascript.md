@@ -5,6 +5,9 @@ Programming language for the more dynamic aspect of frontend developement.
 ```javascript
 let x = 5 // can be reassigned 
 const y = 10 // cannot be reassigned
+
+// When retrieving a dynamic value
+const input = document.getElementByID("id").value
 ```
 
 # Functions

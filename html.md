@@ -31,3 +31,18 @@ Attaching Javascript function:
 ```html
 <button onclick="myFunction()">Click me</button>
 ```
+
+# span
+
+`<span>` is an **inline** HTML element used for inline selection or highlighting. Useful for selecting small parts of your page that are meant to be dynamic.
+
+**Example (updating text with JavaScript):**
+
+```html
+<p>Result: <span id="result">---</span></p>
+
+<script>
+    // Update only the span's text
+    document.getElementById("result").textContent = "Hello!";
+</script>
+```
