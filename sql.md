@@ -2,6 +2,9 @@
 - Structured Query Language (SQL). Used for relational databases. 
 - Databases can contain multiple tables. Within a table, a row is a record and a column is a field.
 
+# sqlite3
+- `sqlite3` is Python’s built-in module for working with SQLite databases.
+
 # Initialization 
 
 ```sql
@@ -32,3 +35,45 @@ CREATE TABLE users (
 - `DEFAULT`: Sets a default value if none is provided.
 - `FOREIGN KEY`: Enforces a relationship to another table’s primary key.
 - `CHECK`: Ensures values satisfy a condition (e.g., `priority BETWEEN 1 AND 5`).
+
+# Conn/ Cursor 
+Typical steps in working with a database:
+1. Connect to the database.
+2. Create a cursor.
+3. Execute SQL queries.
+4. Commit changes (if modifying data).
+5. Close the connection.
+
+Example:
+
+```python
+conn = sqlite3.connect("tasks.db")
+cursor = conn.cursor()
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY,
+    name TEXT
+)
+""")
+
+conn.commit()
+conn.close()
+```
+
+# Row Factory (Access Columns by Name)
+
+- `row_factory = sqlite3.Row` allows access to columns by name.
+
+Example:
+
+```python
+conn = sqlite3.connect("tasks.db")
+conn.row_factory = sqlite3.Row
+
+cursor = conn.cursor()
+cursor.execute("SELECT * FROM tasks")
+row = cursor.fetchone()
+
+print(row["name"])  # Instead of row[1]
+```
