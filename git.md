@@ -36,3 +36,11 @@ Make changes and commit as usualy withing the new branch.
 See existing branch: `git branch`
 
 Deleting a branch: `git branch -d branch_name`
+
+# .gitignore
+- A `.gitignore` file tells Git which files or directories to ignore when tracking changes. Lives in the root of your repo. 
+  ```
+  .DS_Store
+  __pycache__/
+  *.pyc
+  ```
