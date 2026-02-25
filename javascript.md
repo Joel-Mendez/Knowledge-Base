@@ -49,7 +49,7 @@ Fetching a response from the specified `/url`.
 
 Note: the latter two won't be necessary for other requests such as GET http requests
 ```javascript
-fetch("/reverse", {
+fetch("/your-route", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({ message: input })
