@@ -39,6 +39,8 @@ Deleting a branch: `git branch -d branch_name`
 
 # .gitignore
 - A `.gitignore` file tells Git which files or directories to ignore when tracking changes. Lives in the root of your repo. 
+
+Example `.gitignore` file:
   ```
   .DS_Store
   __pycache__/
