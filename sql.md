@@ -15,11 +15,15 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ``` 
+- `IF NOT EXISTS`
+    -  Safe to call every time the app starts. Only creates the table on the very first run; after that it's a no-op. Without `IF NOT EXISTS`, it would throw an error if the table already exists.
+
 # Primary Keys
 - A primary key serves as a unique identifier for each row
 - Only one primary key can exist per table
 - Must be unique across all rows
 - Cannot be NULL
+- `AUTOINCREMENT` on an integer primary key means the database automatically assigns the next available integer ID when a new row is inserted. You never have to supply the ID yourself.
 
 # Common Data Types
 - `INTEGER`: Whole numbers. Used for IDs, counts, priorities, flags (0/1).
@@ -76,4 +80,33 @@ cursor.execute("SELECT * FROM tasks")
 row = cursor.fetchone()
 
 print(row["name"])  # Instead of row[1]
+```
+
+# Inserting New Rows
+**Basic SQL Syntax**
+```sql
+INSERT INTO table_name (column1, column2) VALUES (value1, value2);
+```
+
+# Parameterized Queries
+- Use `?` as placeholders for values.
+- Don't use f-strings or string concatenation to build SQL queries as it allows for SQL injection (an SQL style input could change the original intent of your query and manipulate your databse). 
+
+Example:
+```python
+# Safe — parameterized
+cursor.execute('INSERT INTO tasks (name) VALUES (?)', (name,))
+
+# Dangerous — never do this
+cursor.execute(f'INSERT INTO tasks (name) VALUES ({name})')
+```
+
+# lastrowid
+- After an `INSERT`, `cursor.lastrowid` gives you the auto-generated primary key of the row that was just inserted.
+- This lets you return the new ID to the frontend without needing a separate `SELECT` query.
+
+```python
+cursor.execute('INSERT INTO tasks (name) VALUES (?)', (name,))
+conn.commit()
+task_id = cursor.lastrowid  # The id sqlite3 assigned to the new row
 ```
