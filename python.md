@@ -23,6 +23,17 @@ def function_name(input1, input2, inputN):
 single = (name,)   # tuple with one element — the comma is required
 not_a_tuple = (name)  # this is just 'name' in parentheses, not a tuple
 ```
+# Lists
+## List Comprehensions
+- Format: `[expression for item in iterable]`
+
+```python
+numbers = [1, 2, 3]
+doubled = [n * 2 for n in numbers]  # [2, 4, 6]
+
+# Real example: convert sqlite3 Row objects to plain dicts
+tasks = [dict(row) for row in rows]
+```
 
 # Importing Local Modules
 - You can import your own `.py` files the same way you import standard libraries (just use the filename without the `.py` extension). 

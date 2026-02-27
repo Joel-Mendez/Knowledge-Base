@@ -32,6 +32,15 @@ Attaching Javascript function:
 <button onclick="myFunction()">Click me</button>
 ```
 
+# Lists
+`<ul>` is an unordered (bulleted) list. `<li>` is each list item inside it (often created dynamically with JavaScript).
+```html
+<ul id="task-list">
+    <li>Buy milk</li>
+    <li>Walk the dog</li>
+</ul>
+```
+
 # span
 
 `<span>` is an **inline** HTML element used for inline selection or highlighting. Useful for selecting small parts of your page that are meant to be dynamic.

@@ -83,9 +83,45 @@ print(row["name"])  # Instead of row[1]
 ```
 
 # Inserting New Rows
-**Basic SQL Syntax**
+## Basic SQL Syntax
 ```sql
 INSERT INTO table_name (column1, column2) VALUES (value1, value2);
+```
+## lastrowid
+- After an `INSERT`, `cursor.lastrowid` gives you the auto-generated primary key of the row that was just inserted.
+- This lets you return the new ID to the frontend without needing a separate `SELECT` query.
+
+Example:
+```python
+cursor.execute('INSERT INTO tasks (name) VALUES (?)', (name,))
+conn.commit()
+task_id = cursor.lastrowid  # The id sqlite3 assigned to the new row
+```
+
+# Selecting Rows
+**Basic SQL Syntax**
+```sql
+SELECT column1, column2 FROM table_name;
+SELECT * FROM table_name;  -- * means all columns
+```
+
+**In Python (sqlite3):**
+```python
+cursor.execute('SELECT id, name FROM tasks')
+rows = cursor.fetchall()   # returns all matching rows as a list
+row  = cursor.fetchone()   # returns only the first matching row (or None)
+```
+
+## Converting a Row to a Dict
+- `sqlite3.Row` objects are dict-like but not actual Python dicts, so `jsonify` won't accept them directly.
+- Use `dict(row)` to convert one row, or a list comprehension for multiple rows.
+
+```python
+# Single row
+task = dict(row)  # {"id": 1, "name": "Buy milk"}
+
+# All rows
+tasks = [dict(row) for row in rows]  # [{"id": 1, ...}, {"id": 2, ...}]
 ```
 
 # Parameterized Queries
@@ -99,14 +135,4 @@ cursor.execute('INSERT INTO tasks (name) VALUES (?)', (name,))
 
 # Dangerous — never do this
 cursor.execute(f'INSERT INTO tasks (name) VALUES ({name})')
-```
-
-# lastrowid
-- After an `INSERT`, `cursor.lastrowid` gives you the auto-generated primary key of the row that was just inserted.
-- This lets you return the new ID to the frontend without needing a separate `SELECT` query.
-
-```python
-cursor.execute('INSERT INTO tasks (name) VALUES (?)', (name,))
-conn.commit()
-task_id = cursor.lastrowid  # The id sqlite3 assigned to the new row
 ```
