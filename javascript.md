@@ -9,6 +9,19 @@ const y = 10 // cannot be reassigned
 // When retrieving a dynamic value
 const input = document.getElementByID("id").value
 ```
+## Arrays
+```javascript
+const myArray = [1, 2, 3] // Creating an array 
+myArray[0] // Accessing the first element (1)
+myArray.push(4) // Adding a new element to the end of the array
+```
+**forEach** — iterates over every item in an array and runs a function on each one.
+```javascript
+const items = ["a", "b", "c"]
+items.forEach(item => {
+    console.log(item)  // runs once per item
+})
+```
 
 # Functions
 ```javascript
@@ -76,6 +89,35 @@ More general example:
 fetch("/url")                  // start an async request to /url (returns a Promise)
   .then(x => func(x))          // when the response arrives, call it "x" and apply func(x)
   .then(y => y.func());        // when the result of func(x) is ready, call it "y" and call y.func()
+```
+
+# DOM Manipulation
+The DOM (Document Object Model) is the live representation of the HTML page that JavaScript can read and modify.
+
+**createElement** — creates a new HTML element (not yet on the page).
+```javascript
+const item = document.createElement("li")  // creates <li></li>
+item.textContent = "Buy milk"              // sets its text
+```
+
+**appendChild** — attaches a created element inside a parent element on the page.
+```javascript
+const list = document.getElementById("task-list")
+list.appendChild(item)  // adds <li>Buy milk</li> inside the <ul>
+```
+
+**innerHTML** — reads or overwrites all the HTML content inside an element.
+```javascript
+list.innerHTML = ""        // clears everything inside the element
+list.innerHTML = "<li>hi</li>"  // replaces content with new HTML
+```
+
+# Running Code on Page Load
+Any JavaScript written at the top level of a `<script>` block (not inside a function) runs automatically when the page loads.
+```javascript
+function loadTasks() { /* ... */ }
+
+loadTasks()  // called here at the top level — runs immediately when the page opens
 ```
 
 # Other
