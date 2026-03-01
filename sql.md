@@ -91,7 +91,6 @@ INSERT INTO table_name (column1, column2) VALUES (value1, value2);
 - After an `INSERT`, `cursor.lastrowid` gives you the auto-generated primary key of the row that was just inserted.
 - This lets you return the new ID to the frontend without needing a separate `SELECT` query.
 
-Example:
 ```python
 cursor.execute('INSERT INTO tasks (name) VALUES (?)', (name,))
 conn.commit()
@@ -122,6 +121,16 @@ task = dict(row)  # {"id": 1, "name": "Buy milk"}
 
 # All rows
 tasks = [dict(row) for row in rows]  # [{"id": 1, ...}, {"id": 2, ...}]
+```
+
+# Deleting Rows
+```sql
+DELETE FROM table_name WHERE condition;
+```
+
+```python
+cursor.execute('DELETE FROM tasks WHERE id = ?', (task_id,))
+conn.commit()
 ```
 
 # Parameterized Queries

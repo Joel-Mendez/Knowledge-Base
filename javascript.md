@@ -94,6 +94,14 @@ fetch("/url")                  // start an async request to /url (returns a Prom
 # DOM Manipulation
 The DOM (Document Object Model) is the live representation of the HTML page that JavaScript can read and modify.
 
+**addEventListener** — attaches an event handler to an element from JavaScript. Use this instead of `onclick="..."` when the element is created dynamically in JavaScript (you can't set `onclick` on elements that don't exist in the HTML yet).
+```javascript
+btn.addEventListener("click", () => {
+    console.log("button was clicked")
+})
+```
+Common events: `"click"`, `"change"`, `"input"`, `"submit"`
+
 **createElement** — creates a new HTML element (not yet on the page).
 ```javascript
 const item = document.createElement("li")  // creates <li></li>
